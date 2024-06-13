@@ -13,7 +13,6 @@ const Login = () => {
     if (!inputId || !inputPassword) {
       return alert("빈 칸을 모두 채워주세요!");
     }
-
     navigate("/sign-up");
   };
 
@@ -29,14 +28,14 @@ const Login = () => {
     <LoginWrapper>
       <LoginForm onSubmit={handleSubmit}>
         <InputContainer>
-          <label htmlFor="id">User-ID</label>
+          <label htmlFor="id">ID</label>
           <input
             type="text"
             placeholder="ID"
             value={inputId}
             onChange={handleInputId}
           />
-          <label htmlFor="password">User-PW</label>
+          <label htmlFor="password">PW</label>
           <input
             type="password"
             placeholder="Password"
@@ -47,7 +46,9 @@ const Login = () => {
         <BtnContainer>
           <LoginBtn type="submit">로그인</LoginBtn>
           <span>
-            <h5 style={{margin:'5px', padding:'3px'}}>계정이 없으신가요?</h5>
+            <h5 style={{ margin: "5px", padding: "3px" }}>
+              계정이 없으신가요?
+            </h5>
             <Link to={"/sign-up"}>회원가입</Link>
           </span>
         </BtnContainer>

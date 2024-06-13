@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import {register} from "../api/auth";
 
 const SignUp = () => {
   const [inputId, setInputId] = useState("");
@@ -9,22 +10,31 @@ const SignUp = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!inputId || inputId.length < 4) {
+    if (!inputId || inputId.length <= 4) {
       return alert("아이디는 최소 4글자 이상이어야 합니다.");
     }
-    if (!inputPassword || inputPasswordk.length < 4) {
+    if (!inputPassword || inputPassword.length <= 4) {
       return alert("비밀번호는 최소 4글자 이상이어야 합니다.");
     }
-    if (!inputNickName || inputNickName.length < 4) {
+    if (!inputNickName || inputNickName.length <= 2) {
       return alert("닉네임은 최소 2글자 이상이어야 합니다.");
     }
     if (!inputId || !inputPassword) {
       return alert("빈 칸을 모두 채워주세요!");
     } else {
-      navigate("/");
+    }
+
+    const res = await register({
+      id: inputId,
+      password: inputPassword,
+      nickname: inputNickName,
+    })
+    if (res) {
+      confirm('회원가입이 완료됐습니다!')
+      navigate('/login')
     }
   };
 
@@ -43,6 +53,7 @@ const SignUp = () => {
   const handleBackNavigate = () => {
     navigate("/login");
   };
+ 
 
   return (
     <LoginWrapper>

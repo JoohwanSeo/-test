@@ -5,20 +5,28 @@ import styled from "styled-components";
 const SignUp = () => {
   const [inputId, setInputId] = useState("");
   const [inputPassword, setInputPassword] = useState("");
-  const [inputNickName, setInputNickName] = useState('')
+  const [inputNickName, setInputNickName] = useState("");
 
   const navigate = useNavigate();
 
-
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    if(!inputId || !inputPassword) {
-      return alert('빈 칸을 모두 채워주세요!')
+    if (!inputId || inputId.length < 4) {
+      return alert("아이디는 최소 4글자 이상이어야 합니다.");
     }
-
-    navigate('/')
-  }
+    if (!inputPassword || inputPasswordk.length < 4) {
+      return alert("비밀번호는 최소 4글자 이상이어야 합니다.");
+    }
+    if (!inputNickName || inputNickName.length < 4) {
+      return alert("닉네임은 최소 2글자 이상이어야 합니다.");
+    }
+    if (!inputId || !inputPassword) {
+      return alert("빈 칸을 모두 채워주세요!");
+    } else {
+      navigate("/");
+    }
+  };
 
   const handleInputId = (e) => {
     setInputId(e.target.value);
@@ -29,44 +37,45 @@ const SignUp = () => {
   };
 
   const handleInputNick = (e) => {
-    setInputNickName(e.target.value)
-  }
+    setInputNickName(e.target.value);
+  };
 
-  
+  const handleBackNavigate = () => {
+    navigate("/login");
+  };
 
   return (
     <LoginWrapper>
       <LoginForm onSubmit={handleSubmit}>
         <InputContainer>
-          <label htmlFor="id">User-ID</label>
+          <label htmlFor="id">ID</label>
           <input
             type="text"
             placeholder="ID"
             value={inputId}
             onChange={handleInputId}
           />
-          <label htmlFor="password">User-PW</label>
+          <label htmlFor="password">PW</label>
           <input
             type="password"
             placeholder="Password"
             value={inputPassword}
             onChange={handleInputPw}
           />
-          <label htmlFor="nickname">User-Nickname</label>
+          <label htmlFor="nickname">Nick</label>
           <input
             type="text"
             placeholder="Nickname"
             value={inputNickName}
-            onChange={handleInputNick}            
+            onChange={handleInputNick}
           />
         </InputContainer>
 
         <BtnContainer>
-          <SignUpBtn
-           type="submit"
-          >
-          생성
-          </SignUpBtn>
+          <SignUpBtn type="submit">생성</SignUpBtn>
+          <BackLoginBtn type="button" onClick={handleBackNavigate}>
+            뒤로가기
+          </BackLoginBtn>
         </BtnContainer>
       </LoginForm>
     </LoginWrapper>
@@ -83,8 +92,8 @@ const LoginWrapper = styled.div`
 `;
 
 const LoginForm = styled.form`
-display: contents;
-`
+  display: contents;
+`;
 
 const InputContainer = styled.section`
   margin-bottom: 15px;
@@ -115,8 +124,25 @@ const SignUpBtn = styled.button`
   cursor: pointer;
   margin-bottom: 13px;
 
-  &:disabled {
+  &:hover {
     background-color: #1679ab;
+    transform: scale(1);
+  }
+`;
+
+const BackLoginBtn = styled.button`
+  width: 100%;
+  padding: 10px;
+  background-color: #7b7672;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 13px;
+
+  &:hover {
+    background-color: #2c1700;
+    transform: scale(1);
   }
 `;
 

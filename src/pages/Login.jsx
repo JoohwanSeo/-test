@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { login } from "../api/auth";
 
-const Login = () => {
+const Login = ({setUsers}) => {
   const [inputId, setInputId] = useState("");
   const [inputPassword, setInputPassword] = useState("");
-  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!inputId || !inputPassword) {
       return alert("빈 칸을 모두 채워주세요!");
     }
-    navigate("/sign-up");
+
+    const { userId, nickname, avatar } = await login({
+      id: inputId,
+      password: inputPassword,
+    });
+    setUsers({ userId, nickname, avatar});
   };
 
   const handleInputId = (e) => {

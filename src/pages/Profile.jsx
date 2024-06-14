@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { updateProfile } from "../api/profileAuth";
+import { updateProfile } from "../api/auth";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [nickname, setNickname] = useState("");
   const [image, setImage] = useState(null);
+  const navigate = useNavigate()
+
 
   const handleNickname = (e) => {
     setNickname(e.target.value);
@@ -21,7 +24,8 @@ const Profile = () => {
     const formData = new FormData();
     formData.append("nickname", nickname);
     formData.append("image", image);
-    await updateProfile();
+   const res = await updateProfile(formData);
+
   };
 
   return (

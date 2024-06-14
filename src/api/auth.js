@@ -25,8 +25,8 @@ export const login = async ({ id, password }) => {
 
     return res.data;
   } catch (error) {
-    alert('AccessToken이 만료됐습니다.');
-    localStorage.clear()
+    alert("AccessToken이 만료됐습니다.");
+    localStorage.clear();
   }
 };
 
@@ -41,9 +41,24 @@ export const userInfo = async () => {
       });
       return res.data;
     } catch (error) {
-      localStorage.clear()
+      localStorage.clear();
     }
   }
 };
 
-
+export const updateProfile = async (formData) => {
+  console.log(formData);
+  const accessToken = localStorage.getItem("Token");
+  if (accessToken) {
+    try {
+      const res = await axios.patch(authApi + "/profile", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      console.log(res.data);
+      return res.data;
+    } catch (error) {}
+  }
+};

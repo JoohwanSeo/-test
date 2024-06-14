@@ -58,21 +58,21 @@ const SignUp = () => {
     <LoginWrapper>
       <LoginForm onSubmit={handleSubmit}>
         <InputContainer>
-          <label htmlFor="id">ID</label>
+          <label htmlFor="id">ID </label>
           <input
             type="text"
             placeholder="ID"
             value={inputId}
             onChange={handleInputId}
           />
-          <label htmlFor="password">PW</label>
+          <label htmlFor="password">PW </label>
           <input
             type="password"
             placeholder="Password"
             value={inputPassword}
             onChange={handleInputPw}
           />
-          <label htmlFor="nickname">Nick</label>
+          <label htmlFor="nickname">Nick </label>
           <input
             type="text"
             placeholder="Nickname"

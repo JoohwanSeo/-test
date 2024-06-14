@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import "./App.css";
 import Layout from "./components/Layout";
+import Profile from "./pages/Profile";
 
 function App() {
   const [expenses, setExpenses] = useState([
@@ -85,6 +86,7 @@ function App() {
               path="/detail/:id"
               element={<Detail expenses={expenses} setExpenses={setExpenses} />}
             />
+            <Route path="/profile" element={<Profile />} />
           </Route>
           <Route path="/login" element={<Login setUsers={setUsers} />} />
           <Route path="/sign-up" element={<SignUp />} />

@@ -25,8 +25,8 @@ export const login = async ({ id, password }) => {
 
     return res.data;
   } catch (error) {
-    console.log(error?.response?.data?.message);
-    alert(error?.response?.data?.message);
+    alert('AccessToken이 만료됐습니다.');
+    localStorage.clear()
   }
 };
 
@@ -41,7 +41,9 @@ export const userInfo = async () => {
       });
       return res.data;
     } catch (error) {
-      alert(error?.response?.data?.message);
+      localStorage.clear()
     }
   }
 };
+
+

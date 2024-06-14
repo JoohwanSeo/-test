@@ -49,6 +49,7 @@ export const userInfo = async () => {
 export const updateProfile = async (formData) => {
   console.log(formData);
   const accessToken = localStorage.getItem("Token");
+  console.log(accessToken)
   if (accessToken) {
     try {
       const res = await axios.patch(authApi + "/profile", formData, {

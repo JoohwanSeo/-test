@@ -87,6 +87,14 @@ export default function Detail() {
     }
   },[selectedExpense])
 
+  const editMutation = useMutation({
+    mutationFn: putExpense,
+    onSuccess: () => {
+      queryClient.invalidateQueries(['expense'])
+      navigate(0)
+    }
+  })
+
   const editExpense = () => {
     const datePattern = /^\d{4}-\d{2}-\d{2}$/;
     if (!datePattern.test(date)) {

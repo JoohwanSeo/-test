@@ -30,3 +30,14 @@ export const postExpense = async (newExpense) => {
     alert("데이터 입력에 문제가 발생했습니다.");
   }
 };
+
+export const putExpense = async (updatedExpense) => {
+  const { id, ...rest } = updatedExpense;
+  try {
+    const res = await axios.put(`${jsonServer}/expenses/${id}`, rest);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+    alert("데이터 입력에 문제가 발생했습니다.");
+  }
+};

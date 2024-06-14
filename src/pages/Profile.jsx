@@ -23,14 +23,14 @@ const Profile = () => {
 
     const formData = new FormData();
     formData.append("nickname", nickname);
-    formData.append("image", image);
+    formData.append("avatar", image);
    const res = await updateProfile(formData);
 
   };
 
   return (
     <ProfileWrapper>
-      <h3>프로필 수정</h3>
+      <h3>Edit Profile</h3>
       <InputContainer>
         <ProfileInput>
           <label htmlFor="nickname">Nick </label>

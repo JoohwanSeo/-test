@@ -9,7 +9,6 @@ import Layout from "./components/Layout";
 import Profile from "./pages/Profile";
 
 function App() {
-  const [expenses, setExpenses] = useState([]);
   const [users, setUsers] = useState(null);
 
   return (
@@ -22,11 +21,11 @@ function App() {
           >
             <Route
               index
-              element={<Home users={users} expenses={expenses} setExpenses={setExpenses} />}
+              element={<Home users={users} />}
             />
             <Route
               path="/detail/:id"
-              element={<Detail expenses={expenses} setExpenses={setExpenses} />}
+              element={<Detail/>}
             />
             <Route path="/profile" element={<Profile />} />
           </Route>

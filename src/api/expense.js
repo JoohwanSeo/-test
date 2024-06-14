@@ -12,6 +12,15 @@ export const getExpense = async () => {
   }
 };
 
+export const getDetailExpense = async ({ queryKey }) => {
+  try {
+    const res = await axios.get(`${jsonServer}/expenses/${queryKey[1]}`);
+    return res.data;
+  } catch (error) {
+    alert("데이터 로드에 문제가 발생했습니다.");
+  }
+};
+
 export const postExpense = async (newExpense) => {
   try {
     const res = await axios.post(jsonServer + "/expenses", newExpense);

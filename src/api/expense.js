@@ -41,3 +41,15 @@ export const putExpense = async (updatedExpense) => {
     alert("데이터 입력에 문제가 발생했습니다.");
   }
 };
+
+
+export const delExpense = async (id) => {
+    try {
+      const {data} = await axios.delete(`${jsonServer}/expenses/${id}`);
+      return data
+    } catch (error) {
+      console.log(error);
+      alert("데이터 입력에 문제가 발생했습니다.");
+    }
+  };
+  

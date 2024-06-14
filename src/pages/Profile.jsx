@@ -6,8 +6,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 const Profile = () => {
   const [nickname, setNickname] = useState("");
   const [image, setImage] = useState(null);
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
 
   const handleNickname = (e) => {
     setNickname(e.target.value);
@@ -24,8 +23,7 @@ const Profile = () => {
     const formData = new FormData();
     formData.append("nickname", nickname);
     formData.append("avatar", image);
-   const res = await updateProfile(formData);
-
+    const res = await updateProfile(formData);
   };
 
   return (
@@ -46,9 +44,40 @@ const Profile = () => {
   );
 };
 
-const ProfileWrapper = styled.div``;
-const InputContainer = styled.section``;
-const ProfileInput = styled.div``;
-const PofileImgBtn = styled.button``;
+const ProfileWrapper = styled.div`
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+`;
+const InputContainer = styled.section`
+  margin-bottom: 15px;
+`;
+
+const ProfileInput = styled.div`
+  margin-bottom: 15px;
+
+  label {
+    display: flex;
+    margin-bottom: 5px;
+  }
+
+  input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+`;
+const PofileImgBtn = styled.button`
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 10px;
+`;
 
 export default Profile;

@@ -17,7 +17,7 @@ export const register = async ({ id, password, nickname }) => {
 
 export const login = async ({ id, password }) => {
   try {
-    const res = await axios.post(`${authApi}/login?expiresIn=10m`, {
+    const res = await axios.post(`${authApi}/login?expiresIn=50m`, {
       id,
       password,
     });
@@ -59,6 +59,7 @@ export const updateProfile = async (formData) => {
       });
       console.log(res.data);
       return res.data;
-    } catch (error) {}
-  }
+    } catch (error) {
+    }
+  } 
 };

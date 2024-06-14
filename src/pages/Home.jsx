@@ -28,12 +28,12 @@ export default function Home({ expenses, setExpenses }) {
 
   return (
     <Container>
-      <MonthNavigation month={month} setMonth={setMonth} />
       <CreateExpense
         month={month}
         expenses={expenses}
         setExpenses={setExpenses}
       />
+      <MonthNavigation month={month} setMonth={setMonth} />
       <ExpenseList expenses={filteredExpenses} />
     </Container>
   );

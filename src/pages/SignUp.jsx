@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import {register} from "../api/auth";
+import { register } from "../api/auth";
 
 const SignUp = () => {
   const [inputId, setInputId] = useState("");
@@ -31,10 +31,10 @@ const SignUp = () => {
       id: inputId,
       password: inputPassword,
       nickname: inputNickName,
-    })
+    });
     if (res) {
-      confirm('회원가입이 완료됐습니다!')
-      navigate('/login')
+      confirm("회원가입이 완료됐습니다!");
+      navigate("/login");
     }
   };
 
@@ -53,7 +53,6 @@ const SignUp = () => {
   const handleBackNavigate = () => {
     navigate("/login");
   };
- 
 
   return (
     <LoginWrapper>

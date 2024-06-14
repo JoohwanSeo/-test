@@ -26,22 +26,22 @@ export const login = async ({ id, password }) => {
     return res.data;
   } catch (error) {
     console.log(error?.response?.data?.message);
-    alert(error?.response?.data?.message)
+    alert(error?.response?.data?.message);
   }
 };
 
 export const userInfo = async () => {
   const accessToken = localStorage.getItem("Token");
-  if (!accessToken) {
+  if (accessToken) {
     try {
-     const res = await axios.get(authApi + '/user', {
+      const res = await axios.get(authApi + "/user", {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       });
-      return res.data
+      return res.data;
     } catch (error) {
-      alert(error?.response?.data?.message)
+      alert(error?.response?.data?.message);
     }
   }
 };

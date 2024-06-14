@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Detail from "./pages/Detail";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import { userInfo } from "./api/auth";
 import "./App.css";
+import Layout from "./components/Layout";
 
 function App() {
   const [expenses, setExpenses] = useState([
@@ -67,22 +67,7 @@ function App() {
         "자율주행차량 운전주행모드 자동 전환용 인식률 90% 이상의 다중 센서 기반 운전자 상태 인식 및 상황 인식 원천 기술 개발",
     },
   ]);
-  const [users, setUsers] = useState(null)
-
-  useEffect(() => {
-    userInfo().then((res) => {
-      if (res) {
-        setUsers({
-          userId: res.id,
-          nickname: res.nickname,
-          avatar: res.avatar,
-        })
-      }
-    })
-  }, [])
-
-  console.log(users)
-
+  const [users, setUsers] = useState(null);
 
   return (
     <>
@@ -90,20 +75,19 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Home expenses={expenses} setExpenses={setExpenses} />}
-          />
-          <Route
-            path="/detail/:id"
-            element={<Detail expenses={expenses} setExpenses={setExpenses} />}
-          />
-          <Route
-            path="/login"
-            element={<Login setUsers={setUsers}/>}
-          />
-          <Route
-            path="/sign-up"
-            element={<SignUp />}
-          />
+            element={<Layout users={users} setUsers={setUsers} />}
+          >
+            <Route
+              index
+              element={<Home expenses={expenses} setExpenses={setExpenses} />}
+            />
+            <Route
+              path="/detail/:id"
+              element={<Detail expenses={expenses} setExpenses={setExpenses} />}
+            />
+          </Route>
+          <Route path="/login" element={<Login setUsers={setUsers} />} />
+          <Route path="/sign-up" element={<SignUp />} />
         </Routes>
       </BrowserRouter>
     </>

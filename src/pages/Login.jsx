@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { login } from "../api/auth";
 
-const Login = ({setUsers}) => {
+const Login = ({ setUsers }) => {
   const [inputId, setInputId] = useState("");
   const [inputPassword, setInputPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +19,10 @@ const Login = ({setUsers}) => {
       id: inputId,
       password: inputPassword,
     });
-    setUsers({ userId, nickname, avatar});
+
+    alert("로그인 완료!");
+    setUsers({ userId, nickname, avatar });
+    navigate("/");
   };
 
   const handleInputId = (e) => {

@@ -71,9 +71,17 @@ function App() {
 
   useEffect(() => {
     userInfo().then((res) => {
-    console.log(res)
+      if (res) {
+        setUsers({
+          userId: res.id,
+          nickname: res.nickname,
+          avatar: res.avatar,
+        })
+      }
     })
   }, [])
+
+  console.log(users)
 
 
   return (

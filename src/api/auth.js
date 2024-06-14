@@ -21,7 +21,6 @@ export const login = async ({ id, password }) => {
       id,
       password,
     });
-    console.log(res.data);
     localStorage.setItem("Token", res.data.accessToken);
 
     return res.data;
@@ -32,7 +31,7 @@ export const login = async ({ id, password }) => {
 };
 
 export const userInfo = async () => {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = localStorage.getItem("Token");
   if (!accessToken) {
     try {
      const res = await axios.get(authApi + '/user', {
